@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import User from "./models/useModel.js"
 import Redis from "ioredis";
 import ratelimit from "./middleware/ratelimit.js"
+import emailQueue from "./queue.js"; 
 
 const app=express();
 app.use(express.json());
@@ -22,6 +23,7 @@ app.post("/create",async(req,res)=>{
         email,
         password
     })
+      await emailQueue.add("send-email",{email})
     return res.status(201).json(user);
 })
 app.get("/get",ratelimit,async(req,res)=>{
