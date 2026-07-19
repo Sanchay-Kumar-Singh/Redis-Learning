@@ -4,6 +4,7 @@ dotenv.config();
 import connectDB from "./config/db.js";
 import User from "./models/useModel.js"
 import Redis from "ioredis";
+import ratelimit from "./middleware/ratelimit.js"
 
 const app=express();
 app.use(express.json());
@@ -23,7 +24,7 @@ app.post("/create",async(req,res)=>{
     })
     return res.status(201).json(user);
 })
-app.get("/get",async(req,res)=>{
+app.get("/get",ratelimit,async(req,res)=>{
     const user=await User.find({});
     
     return res.status(200).json(user)
