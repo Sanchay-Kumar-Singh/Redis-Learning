@@ -1,7 +1,6 @@
 # <h1>🚀 Redis Learning</h1>
 
 A comprehensive Redis learning project built with **Node.js**, **Express.js**, **MongoDB**, **Redis**, and **BullMQ**. This project demonstrates some of the most common real-world Redis use cases that every backend developer should know, including **Caching**, **OTP Management**, **Rate Limiting**, and **Background Job Processing**.
-
 ---
 
 # 📌 Table of Contents
